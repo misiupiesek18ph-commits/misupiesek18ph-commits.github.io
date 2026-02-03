@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfigurator Rowerów MTB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Pasek nawigacyjny -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-bicycle"></i>
+                <span>MTB Konfigurator Pro</span>
+            </div>
+            <div class="nav-steps">
+                <div class="step-indicator active">1. Komponenty</div>
+                <div class="step-indicator">2. Podsumowanie</div>
+                <div class="step-indicator">3. Finalizacja</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Główny kontener -->
+    <div class="main-container">
+        <!-- Lewa kolumna - konfiguracja -->
+        <div class="config-area">
+            <!-- Nagłówek etapu -->
+            <div class="stage-header">
+                <h1><i class="fas fa-cogs"></i> Skomponuj swój rower</h1>
+                <p class="stage-description">Wybierz komponenty w kolejności montażu</p>
+            </div>
+
+            <!-- Lista komponentów -->
+            <div class="components-list">
+                <!-- Rama -->
+                <div class="component-card" data-component="frame">
+                    <div class="component-info">
+                        <div class="component-number">01</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Rama</h3>
+                            <p class="component-description">Podstawa Twojego roweru. Wybierz odpowiedni materiał i rozmiar.</p>
+                            <div class="component-selection" id="frame-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Amortyzator przedni -->
+                <div class="component-card" data-component="fork">
+                    <div class="component-info">
+                        <div class="component-number">02</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Amortyzator przedni</h3>
+                            <p class="component-description">Dobierz widelec do stylu jazdy i terenu.</p>
+                            <div class="component-selection" id="fork-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Tylny amortyzator -->
+                <div class="component-card" data-component="damper">
+                    <div class="component-info">
+                        <div class="component-number">03</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Tylny amortyzator</h3>
+                            <p class="component-description">Tylny amortyzator dla pełnego zawieszenia.</p>
+                            <div class="component-selection" id="damper-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Korba -->
+                <div class="component-card" data-component="crank">
+                    <div class="component-info">
+                        <div class="component-number">04</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Korba</h3>
+                            <p class="component-description">Korba z zębatkami, łożyskowanie.</p>
+                            <div class="component-selection" id="crank-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Przerzutka -->
+                <div class="component-card" data-component="derailleur">
+                    <div class="component-info">
+                        <div class="component-number">05</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Przerzutka</h3>
+                            <p class="component-description">Tylna przerzutka, prowadzenie łańcucha.</p>
+                            <div class="component-selection" id="derailleur-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Manetka -->
+                <div class="component-card" data-component="shifter">
+                    <div class="component-info">
+                        <div class="component-number">06</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Manetka</h3>
+                            <p class="component-description">Manetki do zmiany biegów.</p>
+                            <div class="component-selection" id="shifter-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Kaseta -->
+                <div class="component-card" data-component="cassette">
+                    <div class="component-info">
+                        <div class="component-number">07</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Kaseta</h3>
+                            <p class="component-description">Zestaw zębatek na tylnej piaście.</p>
+                            <div class="component-selection" id="cassette-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Łańcuch -->
+                <div class="component-card" data-component="chain">
+                    <div class="component-info">
+                        <div class="component-number">08</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Łańcuch</h3>
+                            <p class="component-description">Łańcuch rowerowy.</p>
+                            <div class="component-selection" id="chain-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Hamulce -->
+                <div class="component-card" data-component="brakes">
+                    <div class="component-info">
+                        <div class="component-number">09</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Hamulce</h3>
+                            <p class="component-description">Układ hamulcowy z tarczami.</p>
+                            <div class="component-selection" id="brakes-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Opony -->
+                <div class="component-card" data-component="tires">
+                    <div class="component-info">
+                        <div class="component-number">10</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Opony</h3>
+                            <p class="component-description">Opony przednia i tylna.</p>
+                            <div class="component-selection" id="tires-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Obręcze -->
+                <div class="component-card" data-component="rims">
+                    <div class="component-info">
+                        <div class="component-number">11</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Obręcze</h3>
+                            <p class="component-description">Obręcze kół.</p>
+                            <div class="component-selection" id="rims-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Piasty -->
+                <div class="component-card" data-component="hubs">
+                    <div class="component-info">
+                        <div class="component-number">12</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Piasty</h3>
+                            <p class="component-description">Piasty przednia i tylna.</p>
+                            <div class="component-selection" id="hubs-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Kierownica -->
+                <div class="component-card" data-component="handlebar">
+                    <div class="component-info">
+                        <div class="component-number">13</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Kierownica</h3>
+                            <p class="component-description">Kierownica rowerowa.</p>
+                            <div class="component-selection" id="handlebar-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Mostek -->
+                <div class="component-card" data-component="stem">
+                    <div class="component-info">
+                        <div class="component-number">14</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Mostek</h3>
+                            <p class="component-description">Mostek kierownicy.</p>
+                            <div class="component-selection" id="stem-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Gripsy -->
+                <div class="component-card" data-component="grips">
+                    <div class="component-info">
+                        <div class="component-number">15</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Gripsy</h3>
+                            <p class="component-description">Gripsy na kierownicę.</p>
+                            <div class="component-selection" id="grips-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Sztyca -->
+                <div class="component-card" data-component="dropper">
+                    <div class="component-info">
+                        <div class="component-number">16</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Sztyca</h3>
+                            <p class="component-description">Sztyca dropper do dynamicznej jazdy.</p>
+                            <div class="component-selection" id="dropper-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Siodełko -->
+                <div class="component-card" data-component="saddle">
+                    <div class="component-info">
+                        <div class="component-number">17</div>
+                        <div class="component-details">
+                            <h3 class="component-name">Siodełko</h3>
+                            <p class="component-description">Komfort i ergonomia na każdą trasę.</p>
+                            <div class="component-selection" id="saddle-selection">
+                                <span class="no-selection">Nie wybrano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prawa kolumna - podsumowanie -->
+        <div class="summary-area">
+            <div class="summary-card">
+                <h2><i class="fas fa-clipboard-list"></i> Podsumowanie zestawu</h2>
+                
+                <div class="selected-parts-list" id="selected-parts-list">
+                    <p class="empty-summary">Dodaj pierwszy komponent do zestawu</p>
+                </div>
+                
+                <div class="price-summary">
+                    <div class="price-row total">
+                        <span><strong>RAZEM:</strong></span>
+                        <span id="final-total">0 zł</span>
+                    </div>
+                </div>
+                
+                <button class="btn-next" id="btn-next-stage" disabled>
+                    Przejdź do podsumowania
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                
+                <div class="progress-info">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p class="progress-text">Ukończono: <span id="progress-percent">0%</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal wyboru komponentu -->
+    <div class="component-modal" id="componentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Wybierz komponent</h2>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="filter-panel">
+                    <h3><i class="fas fa-filter"></i> Filtruj</h3>
+                    
+                    <!-- Filtr ceny -->
+                    <div class="filter-section">
+                        <h4>Cena</h4>
+                        <div class="price-slider-container">
+                            <input type="range" id="priceSlider" min="0" max="10000" step="100" value="10000">
+                            <div class="price-labels">
+                                <span>0 zł</span>
+                                <span id="maxPriceDisplay">10000 zł</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Filtry specyficzne dla komponentu -->
+                    <div class="filter-section" id="dynamicFilters">
+                        <!-- Filtry będą dodawane dynamicznie -->
+                    </div>
+                    
+                    <!-- Filtry marki -->
+                    <div class="filter-section">
+                        <h4>Marka</h4>
+                        <div class="brand-filters" id="brandFilters">
+                            <!-- Checkboxy będą dodawane dynamicznie -->
+                        </div>
+                    </div>
+                    
+                    <button class="btn-filter-reset" id="resetFilters">
+                        <i class="fas fa-redo"></i> Resetuj filtry
+                    </button>
+                </div>
+                
+                <div class="products-panel">
+                    <div class="products-header">
+                        <h3 id="productsCount">Produkty (0)</h3>
+                        <div class="sort-options">
+                            <select id="sortBy">
+                                <option value="price-asc">Cena: od najniższej</option>
+                                <option value="price-desc">Cena: od najwyższej</option>
+                                <option value="name-asc">Nazwa: A-Z</option>
+                                <option value="name-desc">Nazwa: Z-A</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Produkty będą dodawane dynamicznie -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal kompatybilności -->
+    <div class="compatibility-modal" id="compatibilityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-exclamation-triangle"></i> Uwaga kompatybilności</h2>
+                <button class="modal-close" id="compatibilityClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="compatibilityMessage">Ten komponent może nie być kompatybilny z wybranymi częściami.</p>
+                <div class="modal-actions">
+                    <button class="btn-secondary" id="cancelSelection">Anuluj</button>
+                    <button class="btn-primary" id="confirmSelection">Dodaj mimo to</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal szczegółów produktu -->
+    <div class="product-detail-modal" id="productDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="detailTitle">Szczegóły produktu</h2>
+                <button class="modal-close" id="detailClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body" id="detailBody">
+                <!-- Treść będzie wstawiana dynamicznie -->
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
