@@ -1,463 +1,280 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konfigurator Rowerów MTB</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0f1a">
+  <title>Deutsch Trainer — Nauka zwrotów</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Pasek nawigacyjny -->
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-bicycle"></i>
-                <span>MTB Konfigurator Pro</span>
-            </div>
-            <div class="nav-steps">
-                <div class="step-indicator active">1. Komponenty</div>
-                <div class="step-indicator">2. Podsumowanie</div>
-                <div class="step-indicator">3. Finalizacja</div>
-            </div>
+
+  <!-- ===== APP SHELL ===== -->
+  <div class="app">
+
+    <!-- ===== SIDEBAR / DESKTOP NAV ===== -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">D</div>
+        <div class="brand-text">
+          <span class="brand-title">Deutsch Trainer</span>
+          <span class="brand-sub">Nauka zwrotów</span>
         </div>
-    </nav>
+      </div>
 
-    <!-- Główny kontener -->
-    <div class="main-container">
-        <!-- Lewa kolumna - konfiguracja -->
-        <div class="config-area">
-            <!-- Nagłówek etapu -->
-            <div class="stage-header">
-                <h1><i class="fas fa-cogs"></i> Skomponuj swój rower</h1>
-                <p class="stage-description">Wybierz komponenty w kolejności montażu</p>
-            </div>
+      <nav class="nav" id="mainNav">
+        <button class="nav-btn active" data-view="learn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span>Nauka</span>
+        </button>
+        <button class="nav-btn" data-view="flashcards">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+          <span>Fiszki</span>
+        </button>
+        <button class="nav-btn" data-view="exam">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>Egzamin</span>
+        </button>
+        <button class="nav-btn" data-view="mistakes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+          <span>Powtórka błędów</span>
+        </button>
+        <button class="nav-btn" data-view="stats">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+          <span>Statystyki</span>
+        </button>
+      </nav>
 
-            <!-- Lista komponentów -->
-            <div class="components-list">
-                <!-- Rama -->
-                <div class="component-card" data-component="frame">
-                    <div class="component-info">
-                        <div class="component-number">01</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Rama</h3>
-                            <p class="component-description">Podstawa Twojego roweru. Wybierz odpowiedni materiał i rozmiar.</p>
-                            <div class="component-selection" id="frame-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
+      <div class="sidebar-footer">
+        <div class="cat-label">Kategoria</div>
+        <select id="categorySelect" class="select">
+          <option value="all">Wszystkie zwroty</option>
+          <option value="bank">Bank</option>
+          <option value="poczta">Poczta</option>
+          <option value="bankomat">Bankomat</option>
+        </select>
+      </div>
+    </aside>
 
-                <!-- Amortyzator przedni -->
-                <div class="component-card" data-component="fork">
-                    <div class="component-info">
-                        <div class="component-number">02</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Amortyzator przedni</h3>
-                            <p class="component-description">Dobierz widelec do stylu jazdy i terenu.</p>
-                            <div class="component-selection" id="fork-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
+    <!-- ===== MAIN ===== -->
+    <main class="main">
 
-                <!-- Tylny amortyzator -->
-                <div class="component-card" data-component="damper">
-                    <div class="component-info">
-                        <div class="component-number">03</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Tylny amortyzator</h3>
-                            <p class="component-description">Tylny amortyzator dla pełnego zawieszenia.</p>
-                            <div class="component-selection" id="damper-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
+      <header class="topbar">
+        <div class="topbar-title" id="viewTitle">Nauka</div>
+        <div class="topbar-right">
+          <div class="streak" title="Skuteczność">
+            <span class="streak-dot"></span>
+            <span id="topAccuracy">0%</span>
+          </div>
+        </div>
+      </header>
 
-                <!-- Korba -->
-                <div class="component-card" data-component="crank">
-                    <div class="component-info">
-                        <div class="component-number">04</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Korba</h3>
-                            <p class="component-description">Korba z zębatkami, łożyskowanie.</p>
-                            <div class="component-selection" id="crank-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Przerzutka -->
-                <div class="component-card" data-component="derailleur">
-                    <div class="component-info">
-                        <div class="component-number">05</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Przerzutka</h3>
-                            <p class="component-description">Tylna przerzutka, prowadzenie łańcucha.</p>
-                            <div class="component-selection" id="derailleur-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Manetka -->
-                <div class="component-card" data-component="shifter">
-                    <div class="component-info">
-                        <div class="component-number">06</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Manetka</h3>
-                            <p class="component-description">Manetki do zmiany biegów.</p>
-                            <div class="component-selection" id="shifter-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Kaseta -->
-                <div class="component-card" data-component="cassette">
-                    <div class="component-info">
-                        <div class="component-number">07</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Kaseta</h3>
-                            <p class="component-description">Zestaw zębatek na tylnej piaście.</p>
-                            <div class="component-selection" id="cassette-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Łańcuch -->
-                <div class="component-card" data-component="chain">
-                    <div class="component-info">
-                        <div class="component-number">08</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Łańcuch</h3>
-                            <p class="component-description">Łańcuch rowerowy.</p>
-                            <div class="component-selection" id="chain-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Hamulce -->
-                <div class="component-card" data-component="brakes">
-                    <div class="component-info">
-                        <div class="component-number">09</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Hamulce</h3>
-                            <p class="component-description">Układ hamulcowy z tarczami.</p>
-                            <div class="component-selection" id="brakes-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Opony -->
-                <div class="component-card" data-component="tires">
-                    <div class="component-info">
-                        <div class="component-number">10</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Opony</h3>
-                            <p class="component-description">Opony przednia i tylna.</p>
-                            <div class="component-selection" id="tires-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Obręcze -->
-                <div class="component-card" data-component="rims">
-                    <div class="component-info">
-                        <div class="component-number">11</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Obręcze</h3>
-                            <p class="component-description">Obręcze kół.</p>
-                            <div class="component-selection" id="rims-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Piasty -->
-                <div class="component-card" data-component="hubs">
-                    <div class="component-info">
-                        <div class="component-number">12</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Piasty</h3>
-                            <p class="component-description">Piasty przednia i tylna.</p>
-                            <div class="component-selection" id="hubs-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Kierownica -->
-                <div class="component-card" data-component="handlebar">
-                    <div class="component-info">
-                        <div class="component-number">13</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Kierownica</h3>
-                            <p class="component-description">Kierownica rowerowa.</p>
-                            <div class="component-selection" id="handlebar-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Mostek -->
-                <div class="component-card" data-component="stem">
-                    <div class="component-info">
-                        <div class="component-number">14</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Mostek</h3>
-                            <p class="component-description">Mostek kierownicy.</p>
-                            <div class="component-selection" id="stem-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Gripsy -->
-                <div class="component-card" data-component="grips">
-                    <div class="component-info">
-                        <div class="component-number">15</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Gripsy</h3>
-                            <p class="component-description">Gripsy na kierownicę.</p>
-                            <div class="component-selection" id="grips-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Sztyca -->
-                <div class="component-card" data-component="dropper">
-                    <div class="component-info">
-                        <div class="component-number">16</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Sztyca</h3>
-                            <p class="component-description">Sztyca dropper do dynamicznej jazdy.</p>
-                            <div class="component-selection" id="dropper-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
-                <!-- Siodełko -->
-                <div class="component-card" data-component="saddle">
-                    <div class="component-info">
-                        <div class="component-number">17</div>
-                        <div class="component-details">
-                            <h3 class="component-name">Siodełko</h3>
-                            <p class="component-description">Komfort i ergonomia na każdą trasę.</p>
-                            <div class="component-selection" id="saddle-selection">
-                                <span class="no-selection">Nie wybrano</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="component-action">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-            </div>
+      <!-- ============ VIEW: LEARN ============ -->
+      <section class="view active" id="view-learn">
+        <div class="view-head">
+          <h2>Nauka — Polski → Niemiecki</h2>
+          <p class="muted">Wpisz niemiecki odpowiednik polskiego zwrotu.</p>
         </div>
 
-        <!-- Prawa kolumna - podsumowanie -->
-        <div class="summary-area">
-            <div class="summary-card">
-                <h2><i class="fas fa-clipboard-list"></i> Podsumowanie zestawu</h2>
-                
-                <div class="selected-parts-list" id="selected-parts-list">
-                    <p class="empty-summary">Dodaj pierwszy komponent do zestawu</p>
-                </div>
-                
-                <div class="price-summary">
-                    <div class="price-row total">
-                        <span><strong>RAZEM:</strong></span>
-                        <span id="final-total">0 zł</span>
-                    </div>
-                </div>
-                
-                <button class="btn-next" id="btn-next-stage" disabled>
-                    Przejdź do podsumowania
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-                
-                <div class="progress-info">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
-                    </div>
-                    <p class="progress-text">Ukończono: <span id="progress-percent">0%</span></p>
-                </div>
-            </div>
+        <div class="card question-card">
+          <div class="q-label">Przetłumacz na niemiecki</div>
+          <div class="q-text" id="learnQuestion">—</div>
+          <div class="input-row">
+            <input type="text" id="learnInput" class="input" placeholder="Wpisz odpowiedź po niemiecku..." autocomplete="off" autocapitalize="sentences">
+            <button class="btn btn-primary" id="learnCheck">Sprawdź</button>
+          </div>
+          <div class="feedback" id="learnFeedback"></div>
+          <div class="card-actions">
+            <button class="btn btn-ghost" id="learnNext" disabled>Następny zwrot →</button>
+          </div>
         </div>
-    </div>
 
-    <!-- Modal wyboru komponentu -->
-    <div class="component-modal" id="componentModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Wybierz komponent</h2>
-                <button class="modal-close" id="modalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="filter-panel">
-                    <h3><i class="fas fa-filter"></i> Filtruj</h3>
-                    
-                    <!-- Filtr ceny -->
-                    <div class="filter-section">
-                        <h4>Cena</h4>
-                        <div class="price-slider-container">
-                            <input type="range" id="priceSlider" min="0" max="10000" step="100" value="10000">
-                            <div class="price-labels">
-                                <span>0 zł</span>
-                                <span id="maxPriceDisplay">10000 zł</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Filtry specyficzne dla komponentu -->
-                    <div class="filter-section" id="dynamicFilters">
-                        <!-- Filtry będą dodawane dynamicznie -->
-                    </div>
-                    
-                    <!-- Filtry marki -->
-                    <div class="filter-section">
-                        <h4>Marka</h4>
-                        <div class="brand-filters" id="brandFilters">
-                            <!-- Checkboxy będą dodawane dynamicznie -->
-                        </div>
-                    </div>
-                    
-                    <button class="btn-filter-reset" id="resetFilters">
-                        <i class="fas fa-redo"></i> Resetuj filtry
-                    </button>
-                </div>
-                
-                <div class="products-panel">
-                    <div class="products-header">
-                        <h3 id="productsCount">Produkty (0)</h3>
-                        <div class="sort-options">
-                            <select id="sortBy">
-                                <option value="price-asc">Cena: od najniższej</option>
-                                <option value="price-desc">Cena: od najwyższej</option>
-                                <option value="name-asc">Nazwa: A-Z</option>
-                                <option value="name-desc">Nazwa: Z-A</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="products-grid" id="productsGrid">
-                        <!-- Produkty będą dodawane dynamicznie -->
-                    </div>
-                </div>
-            </div>
+        <div class="progress-wrap">
+          <div class="progress-bar"><div class="progress-fill" id="learnProgress"></div></div>
+          <div class="progress-meta" id="learnProgressMeta">0 / 0</div>
         </div>
-    </div>
+      </section>
 
-    <!-- Modal kompatybilności -->
-    <div class="compatibility-modal" id="compatibilityModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2><i class="fas fa-exclamation-triangle"></i> Uwaga kompatybilności</h2>
-                <button class="modal-close" id="compatibilityClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="compatibilityMessage">Ten komponent może nie być kompatybilny z wybranymi częściami.</p>
-                <div class="modal-actions">
-                    <button class="btn-secondary" id="cancelSelection">Anuluj</button>
-                    <button class="btn-primary" id="confirmSelection">Dodaj mimo to</button>
-                </div>
-            </div>
+      <!-- ============ VIEW: FLASHCARDS ============ -->
+      <section class="view" id="view-flashcards">
+        <div class="view-head">
+          <h2>Fiszki</h2>
+          <p class="muted">Kliknij kartę lub przycisk, aby odwrócić.</p>
         </div>
-    </div>
 
-    <!-- Modal szczegółów produktu -->
-    <div class="product-detail-modal" id="productDetailModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="detailTitle">Szczegóły produktu</h2>
-                <button class="modal-close" id="detailClose">
-                    <i class="fas fa-times"></i>
-                </button>
+        <div class="flashcard-scene">
+          <div class="flashcard" id="flashcard">
+            <div class="flashcard-face flashcard-front">
+              <span class="fc-label">Polski</span>
+              <div class="fc-text" id="fcFront">—</div>
             </div>
-            
-            <div class="modal-body" id="detailBody">
-                <!-- Treść będzie wstawiana dynamicznie -->
+            <div class="flashcard-face flashcard-back">
+              <span class="fc-label">Deutsch</span>
+              <div class="fc-text" id="fcBack">—</div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <script src="main.js"></script>
+        <div class="card-actions center">
+          <button class="btn btn-ghost" id="fcPrev">← Poprzednia</button>
+          <button class="btn btn-secondary" id="fcFlip">Pokaż odpowiedź</button>
+          <button class="btn btn-ghost" id="fcNext">Następna →</button>
+        </div>
+        <div class="progress-meta center" id="fcMeta">1 / 28</div>
+      </section>
+
+      <!-- ============ VIEW: EXAM ============ -->
+      <section class="view" id="view-exam">
+        <div class="view-head">
+          <h2>Egzamin</h2>
+          <p class="muted">Losowe pytania z całego materiału.</p>
+        </div>
+
+        <div id="examStartWrap" class="card center-card">
+          <div class="exam-icon">📝</div>
+          <h3>Gotowy na egzamin?</h3>
+          <p class="muted" id="examInfo">Zostanie wylosowanych 10 pytań.</p>
+          <button class="btn btn-primary" id="examStart">Rozpocznij egzamin</button>
+        </div>
+
+        <div id="examQuizWrap" class="hidden">
+          <div class="card question-card">
+            <div class="q-label">Pytanie <span id="examIndex">1</span> / <span id="examTotal">10</span></div>
+            <div class="q-text" id="examQuestion">—</div>
+            <div class="input-row">
+              <input type="text" id="examInput" class="input" placeholder="Wpisz odpowiedź po niemiecku..." autocomplete="off">
+              <button class="btn btn-primary" id="examCheck">Zatwierdź</button>
+            </div>
+            <div class="feedback" id="examFeedback"></div>
+            <div class="card-actions">
+              <button class="btn btn-ghost" id="examNext" disabled>Następne →</button>
+            </div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" id="examProgress"></div></div>
+          </div>
+        </div>
+
+        <div id="examResultWrap" class="hidden">
+          <div class="card result-card">
+            <h3>Wynik egzaminu</h3>
+            <div class="result-score" id="examScore">0%</div>
+            <div class="result-details">
+              <div class="result-item ok"><span id="examCorrect">0</span> poprawnych</div>
+              <div class="result-item bad"><span id="examWrong">0</span> błędnych</div>
+            </div>
+            <h4 class="mt">Błędy</h4>
+            <div class="mistake-list" id="examMistakeList"></div>
+            <div class="card-actions">
+              <button class="btn btn-primary" id="examRestart">Nowy egzamin</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ VIEW: MISTAKES ============ -->
+      <section class="view" id="view-mistakes">
+        <div class="view-head">
+          <h2>Powtórka błędów</h2>
+          <p class="muted">Zwroty, które ostatnio poszły nie tak.</p>
+        </div>
+
+        <div id="mistakesEmpty" class="card center-card">
+          <div class="exam-icon">✨</div>
+          <h3>Brak błędów!</h3>
+          <p class="muted">Świetna robota — nie ma nic do powtórki.</p>
+        </div>
+
+        <div id="mistakesWrap" class="hidden">
+          <div class="card question-card">
+            <div class="q-label">Powtórka</div>
+            <div class="q-text" id="mistakeQuestion">—</div>
+            <div class="input-row">
+              <input type="text" id="mistakeInput" class="input" placeholder="Wpisz odpowiedź po niemiecku..." autocomplete="off">
+              <button class="btn btn-primary" id="mistakeCheck">Sprawdź</button>
+            </div>
+            <div class="feedback" id="mistakeFeedback"></div>
+            <div class="card-actions">
+              <button class="btn btn-ghost" id="mistakeNext" disabled>Następny →</button>
+            </div>
+          </div>
+          <div class="progress-meta center" id="mistakeMeta"></div>
+        </div>
+      </section>
+
+      <!-- ============ VIEW: STATS ============ -->
+      <section class="view" id="view-stats">
+        <div class="view-head">
+          <h2>Statystyki i postępy</h2>
+          <p class="muted">Twoje wyniki zapisują się automatycznie.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="statKnown">0</div>
+            <div class="stat-label">Poznane zwroty</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="statCorrect">0</div>
+            <div class="stat-label">Poprawne odpowiedzi</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="statAccuracy">0%</div>
+            <div class="stat-label">Skuteczność</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="statTotal">0</div>
+            <div class="stat-label">Wszystkie odpowiedzi</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Postęp nauki</h3>
+          <div class="progress-bar big"><div class="progress-fill" id="statsProgress"></div></div>
+          <div class="progress-meta" id="statsProgressMeta">0 / 28</div>
+        </div>
+
+        <div class="card">
+          <h3>Historia wyników</h3>
+          <div id="historyList" class="history-list"></div>
+        </div>
+
+        <div class="card">
+          <button class="btn btn-danger-ghost" id="resetStats">Wyczyść wszystkie postępy</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== MOBILE BOTTOM NAV ===== -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="bn-btn active" data-view="learn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      <span>Nauka</span>
+    </button>
+    <button class="bn-btn" data-view="flashcards">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+      <span>Fiszki</span>
+    </button>
+    <button class="bn-btn" data-view="exam">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>Egzamin</span>
+    </button>
+    <button class="bn-btn" data-view="mistakes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      <span>Błędy</span>
+    </button>
+    <button class="bn-btn" data-view="stats">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      <span>Statystyki</span>
+    </button>
+  </nav>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
